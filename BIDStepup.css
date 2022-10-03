@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2018, 1Kosmos Inc. All rights reserved.
+ * Licensed under 1Kosmos Open Source Public License version 1.0 (the "License");
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of this license at
+ *    https://github.com/1Kosmos/1Kosmos_License/blob/main/LICENSE.txt
+ */
+
 /* Style inputs, select elements and textareas */
 input[type="text"],
 select,
@@ -102,6 +110,11 @@ input[type="button"] {
   display: none;
   font-size: 12px;
   color: red;
+}
+
+pre#callback_response {
+  width: 100%;
+  overflow: auto;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
