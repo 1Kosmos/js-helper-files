@@ -23,6 +23,7 @@ class BIDStepup {
 
     //Redirect URL for postback data back to parent frame
     const redirectUrl = `https://${tenant_dns}/admin/${community_name}/post_stepup`;
+
     const claimJson = this.returnClaim(acr_method, username);
 
     //OIDC URL for iframe to render
@@ -40,7 +41,7 @@ class BIDStepup {
     iframe.setAttribute("title", "BlockID - Step Up");
     iframe.setAttribute("id", "stepup_iframe");
     iframe.style.width = "100%";
-    iframe.style.height = "600px";
+    iframe.style.height = "100%";
     element[0].appendChild(iframe);
     this.listenPostMessage(callback);
   }
