@@ -1,0 +1,225 @@
+<!-- / Copyright (c) 2018, 1Kosmos Inc. All rights reserved. * Licensed under
+1Kosmos Open Source Public License version 1.0 (the "License"); * You may not
+use this file except in compliance with the License. * You may obtain a copy of
+this license at *
+https://github.com/1Kosmos/1Kosmos_License/blob/main/LICENSE.txt / -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <title>BlockID 1Kosmos Step Up Sample</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./stepup_sample.css" />
+  <script src="../BIDStepup.js"></script>
+  <body>
+    <div class="parent">
+      <div class="boundry">
+        <div class="left">
+          <div class="container">
+            <form action="">
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Tenant DNS:</label>
+                </div>
+                <div class="col-75">
+                  <input
+                    type="text"
+                    id="tenantdns"
+                    name="tenantdns"
+                    placeholder="Please enter tenant dns"
+                    required
+                    value="1k-dev.1kosmos.net"
+                  />
+                  <span class="error" id="tenantdns_span"
+                    >This field is required</span
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Community</label>
+                </div>
+                <div class="col-75">
+                  <input
+                    type="text"
+                    id="community"
+                    name="community"
+                    placeholder="Please enter community"
+                    required
+                    value="default"
+                  />
+                  <span class="error" id="community_span"
+                    >This field is required</span
+                  >
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">ClientId:</label>
+                </div>
+                <div class="col-75">
+                  <input
+                    type="text"
+                    id="clientid"
+                    name="clientid"
+                    placeholder="Please enter clientid"
+                    required
+                    value="1fb62b3cafec3dcb2f73d626b5abccd4"
+                  />
+                  <span class="error" id="clientid_span"
+                    >This field is required</span
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Username</label>
+                </div>
+                <div class="col-75">
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Please enter username"
+                    required
+                    value="gurmeet.singh@1kosmos.com"
+                  />
+                  <span class="error" id="username_span"
+                    >This field is required</span
+                  >
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">State:</label>
+                </div>
+                <div class="col-75">
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    placeholder="Please enter state"
+                    required
+                    value="state123"
+                  />
+                  <span class="error" id="state_span"
+                    >This field is required</span
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">ACR</label>
+                </div>
+                <div class="col-75">
+                  <input
+                    type="text"
+                    id="acr"
+                    name="acr"
+                    placeholder="Comma seprated string"
+                    required
+                    value="'liveID push','otp sms', 'otp email', 'otp'"
+                  />
+                  <span class="error" id="acr_span"
+                    >This field is required</span
+                  >
+                </div>
+              </div>
+              <div class="row submit">
+                <input
+                  type="button"
+                  onclick="submitStepup()"
+                  id="stepup_submit"
+                  value="STEP UP"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="json-response">
+            <h3 class="h2_title">Callback Response</h3>
+            <pre class="response-json" id="callback_response"></pre>
+          </div>
+        </div>
+        <div class="right">
+          <div class="iframe-area">
+            <h3 class="h2_title">Iframe View</h3>
+            <div class="iframe_container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function submitStepup() {
+        let isValid = true;
+        const tenantdns = document.getElementById("tenantdns").value;
+        const community = document.getElementById("community").value;
+        const clientid = document.getElementById("clientid").value;
+        const username = document.getElementById("username").value;
+        const state = document.getElementById("state").value;
+        const acr = document.getElementById("acr").value;
+        if (!tenantdns) {
+          document.getElementById("tenantdns_span").style.display = "block";
+          isValid = false;
+        } else {
+          document.getElementById("tenantdns_span").style.display = "none";
+        }
+
+        if (!community) {
+          document.getElementById("community_span").style.display = "block";
+          isValid = false;
+        } else {
+          document.getElementById("community_span").style.display = "none";
+        }
+
+        if (!clientid) {
+          document.getElementById("clientid_span").style.display = "block";
+          isValid = false;
+        } else {
+          document.getElementById("clientid_span").style.display = "none";
+        }
+
+        if (!username) {
+          document.getElementById("username_span").style.display = "block";
+          isValid = false;
+        } else {
+          document.getElementById("username_span").style.display = "none";
+        }
+
+        if (!state) {
+          document.getElementById("state_span").style.display = "block";
+          isValid = false;
+        } else {
+          document.getElementById("state_span").style.display = "none";
+        }
+
+        if (!acr) {
+          document.getElementById("acr_span").style.display = "block";
+          isValid = false;
+        } else {
+          document.getElementById("acr_span").style.display = "none";
+        }
+
+        if (isValid) {
+          document.getElementById("callback_response").innerHTML = "";
+          BIDStepup.stepup(
+            document.getElementsByClassName("iframe_container"),
+            tenantdns,
+            community,
+            clientid,
+            username,
+            state,
+            acr,
+            postbackCallback
+          );
+        }
+      }
+
+      function postbackCallback(data) {
+        document.getElementById("callback_response").innerHTML = data;
+      }
+    </script>
+  </body>
+</html>
