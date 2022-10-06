@@ -18,8 +18,7 @@ class BIDStepup {
     callback
   ) {
     //Remove iFrame if already exists on stepup
-    const iframeElement = document.getElementById("stepup_iframe");
-    if (iframeElement) element[0].removeChild(iframeElement);
+    this.removeIFrame(element);
 
     //Redirect URL for postback data back to parent frame
     const redirectUrl = `https://${tenant_dns}/admin/${community_name}/post_stepup`;
@@ -42,8 +41,9 @@ class BIDStepup {
     iframe.setAttribute("id", "stepup_iframe");
     iframe.style.width = "100%";
     iframe.style.height = "100%";
+    iframe.style.border = "none";
     element[0].appendChild(iframe);
-    this.listenPostMessage(callback);
+    this.listenPostMessage(callback, element);
   }
 
   static returnClaim(acr_method, username) {
@@ -61,7 +61,7 @@ class BIDStepup {
     });
   }
 
-  static listenPostMessage(callback) {
+  static listenPostMessage(callback, element) {
     // Listen to the post message from the parent window
     window.addEventListener(
       "message",
@@ -70,8 +70,14 @@ class BIDStepup {
         const data = e[key];
 
         callback(data);
+        this.removeIFrame(element);
       },
       false
     );
+  }
+
+  static removeIFrame(element) {
+    const iframeElement = document.getElementById("stepup_iframe");
+    if (iframeElement) element[0].removeChild(iframeElement);
   }
 }
