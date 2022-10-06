@@ -21,7 +21,7 @@ class BIDStepup {
     this.removeIFrame(element);
 
     //Redirect URL for postback data back to parent frame
-    const redirectUrl = `https://${tenant_dns}/admin/${community_name}/post-sso`;
+    const redirectUrl = `https://${tenant_dns}/admin/${community_name}/post_stepup`;
 
     const claimJson = this.returnClaim(acr_method, username);
 
