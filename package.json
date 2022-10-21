@@ -1,0 +1,19 @@
+{
+  "name": "js-helper-files",
+  "version": "1.0.0",
+  "description": "## Add reference of BIDStepup.js and BIDStepup.css files into .html inside head section.",
+  "main": "BIDStepup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1Kosmos/js-helper-files.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1Kosmos/js-helper-files/issues"
+  },
+  "homepage": "https://github.com/1Kosmos/js-helper-files#readme"
+}
