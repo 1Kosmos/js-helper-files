@@ -27,7 +27,7 @@ class BIDStepup {
 
     //OIDC URL for iframe to render
     let oidc_url = encodeURI(
-      `https://${tenant_dns}/oauth2/community/${community_name}/v1/authorize?response_type=code&client_id=${client_id}&scope=openid&redirect_uri=${redirectUrl}&state=${state}&claims=${claimJson}`
+      `https://${tenant_dns}/oauth2/community/${community_name}/v1/authorize?response_type=code&client_id=${client_id}&scope=openid email profile&redirect_uri=${redirectUrl}&state=${state}&claims=${claimJson}`
     );
 
     //Render iframe in provided DOM element
